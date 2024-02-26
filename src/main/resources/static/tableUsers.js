@@ -4,10 +4,11 @@ getTableUser();
 
 function getTableUser() {
     tbody.empty();
-    fetch("http://localhost:8080/adminApi/users")
+    fetch("adminApi/users")
         .then(res => res.json())
-        .then(data => {
-            data.forEach(user => {
+        .then(js => {
+            console.log(js);
+            js.forEach(user => {
                 const roles = user.roles.map(role => role.role).join(',');
                 const users = $(
                     `<tr>

@@ -1,4 +1,6 @@
 'use strict';
+
+
 function getCurrentUser() {
     fetch("userApi/auth")
         .then(res => res.json())

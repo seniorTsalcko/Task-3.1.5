@@ -4,10 +4,10 @@ import org.springframework.security.core.GrantedAuthority;
 import ru.kata.spring.boot_security.demo.entities.Role;
 
 public class AppGrantedAuthority implements GrantedAuthority {
-    private Role Role;
+    private Role role;
 
     @Override
     public String getAuthority() {
-        return Role.getName();
+        return role.getRole();
     }
 }
