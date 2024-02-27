@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping("/adminApi")
@@ -27,11 +29,10 @@ public class AdminController {
         return ResponseEntity.ok(userList);
     }
 
-
-    @GetMapping("user/{id}")
-    public ResponseEntity<User> getUser(@PathVariable(value = "id") Long id) {
+    @GetMapping("/user/{id}")
+    public ResponseEntity<User> getUser(@PathVariable Long id) {
         User user = userService.getById(id);
-        return ResponseEntity.ok(user);
+        return new ResponseEntity<>(user,HttpStatus.OK);
     }
 
     @PostMapping("/user")
@@ -42,9 +43,9 @@ public class AdminController {
 
 
     @PatchMapping("/user/{id}")
-    public ResponseEntity<HttpStatus> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
+    public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody @Valid User user) {
         userService.update(id, user);
-        return ResponseEntity.ok(HttpStatus.OK);
+        return new ResponseEntity<>(user,HttpStatus.OK);
     }
 
     @DeleteMapping("/user/{id}")

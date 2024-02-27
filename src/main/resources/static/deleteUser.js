@@ -7,10 +7,10 @@ async function deleteModal(id) {
     await openAndFillInTheModal(deleteForm, modal, id);
     switch (deleteForm.roles.value) {
         case '1':
-            deleteForm.roles.value = 'USER';
+            deleteForm.roles.value = 'ADMIN';
             break;
         case '2':
-            deleteForm.roles.value = 'ADMIN';
+            deleteForm.roles.value = 'USER';
             break;
     }
     deleteUser()

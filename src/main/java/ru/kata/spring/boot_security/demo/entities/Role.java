@@ -16,12 +16,11 @@ public class Role implements GrantedAuthority {
     @Column(name = "role")
     private String role;
 
-    public Role(String role) {
-        this.role = role;
+    public Role() {
     }
 
-
-    public Role() {
+    public Role(String role) {
+        this.role = role;
     }
 
     public Long getId() {
@@ -43,26 +42,5 @@ public class Role implements GrantedAuthority {
     @Override
     public String getAuthority() {
         return role;
-    }
-
-    @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", role='" + role + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Role role1 = (Role) o;
-        return Objects.equals(getId(), role1.getId()) && Objects.equals(getRole(), role1.getRole());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getRole());
     }
 }

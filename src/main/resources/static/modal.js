@@ -1,3 +1,8 @@
+async function getOneUser(id) {
+    let response = await fetch("/adminApi/user/" + id);
+    return await response.json();
+}
+
 async function openAndFillInTheModal(form, modal, id) {
     modal.show();
     let user = await getOneUser(id);
